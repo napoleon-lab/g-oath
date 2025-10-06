@@ -32,6 +32,8 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 # Optional
 PORT=8321
 DOMAIN=localhost
+REDIRECT_PORT=8321
+REDIRECT_URI=https://yourdomain.com/callback
 SCOPE=https://www.googleapis.com/auth/calendar.readonly
 SSL_KEY_PATH=path/to/ssl/key.pem
 SSL_CERT_PATH=path/to/ssl/cert.pem
@@ -45,7 +47,7 @@ NODE_ENV=production
 2. Create a new project or select an existing one
 3. Enable the Google Calendar API
 4. Create OAuth 2.0 credentials
-5. Add your redirect URI: `http://localhost:8321/callback` (or your configured domain/port)
+5. Add your redirect URI: Configure via `REDIRECT_URI` environment variable, or it will be built as `http://localhost:8321/callback` using `DOMAIN` and `REDIRECT_PORT` (defaults to `http://localhost:8321/callback`)
 6. Copy the Client ID and Client Secret to your `.env` file
 
 ## Usage

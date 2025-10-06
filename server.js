@@ -50,12 +50,12 @@ if (fs.existsSync(SSL_KEY_PATH) && fs.existsSync(SSL_CERT_PATH)) {
 }
 
 const PORT = process.env.PORT || 8321;
+const REDIRECT_PORT = process.env.REDIRECT_PORT || PORT;
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const DOMAIN = process.env.DOMAIN || 'localhost';
 const PROTOCOL = credentials ? 'https' : 'http';
-const BASE_URL = `${PROTOCOL}://${DOMAIN}:${PORT}`;
-const REDIRECT_URI = `${BASE_URL}/callback`;
+const REDIRECT_URI = process.env.REDIRECT_URI || `${PROTOCOL}://${DOMAIN}:${REDIRECT_PORT}/callback`;
 const SCOPE = process.env.SCOPE || 'https://www.googleapis.com/auth/calendar.readonly';
 
 const app = express();
